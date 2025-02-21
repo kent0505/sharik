@@ -10,6 +10,10 @@ abstract interface class OnboardRepository {
   Future<void> removeOnboard();
 
   Future<void> saveProfile(String nickname, String photo);
+
+  String getNickname();
+
+  String getPhoto();
 }
 
 final class OnboardRepositoryImpl implements OnboardRepository {
@@ -31,5 +35,16 @@ final class OnboardRepositoryImpl implements OnboardRepository {
   Future<void> saveProfile(String nickname, String photo) async {
     await _prefs.setString(Keys.nickname, nickname);
     await _prefs.setString(Keys.photo, photo);
+    await _prefs.setBool(Keys.onboard, false);
+  }
+
+  @override
+  String getNickname() {
+    return _prefs.getString(Keys.nickname) ?? 'User';
+  }
+
+  @override
+  String getPhoto() {
+    return _prefs.getString(Keys.photo) ?? Assets.profile1;
   }
 }

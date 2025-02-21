@@ -23,7 +23,10 @@ class MainButton extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          SvgWidget(active ? Assets.button : Assets.buttonDisabled),
+          SvgWidget(
+            active ? Assets.button : Assets.buttonDisabled,
+            fit: BoxFit.fill,
+          ),
           Center(
             child: Text(
               title,

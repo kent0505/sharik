@@ -46,4 +46,5 @@ abstract final class Keys {
   static const coins = 'coins';
   static const wheelAmount = 'wheelAmount';
   static const lastUsed = 'lastUsed';
+  static const scores = 'scores';
 }

@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 
-import '../core/utils.dart';
-
 class LoadingWidget extends StatefulWidget {
   const LoadingWidget({super.key});
 
@@ -19,7 +17,6 @@ class _LoadingWidgetState extends State<LoadingWidget> {
     _timer = Timer.periodic(
       Duration(milliseconds: 300),
       (timer) {
-        logger('LOADING');
         setState(() {
           _index < 2 ? _index++ : _index = 0;
         });
@@ -36,7 +33,6 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   @override
   void dispose() {
     _timer.cancel();
-    logger('DISPOSE');
     super.dispose();
   }
 

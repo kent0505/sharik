@@ -21,6 +21,7 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
       int coins = _repository.getCoins();
       coins += event.coins;
       await _repository.saveCoins(coins);
+      await _repository.saveScore(event.coins);
       emit(CoinsLoaded(coins: coins));
     });
 

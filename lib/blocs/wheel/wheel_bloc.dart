@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../core/utils.dart';
 import '../../data/coins_repository.dart';
 
 part 'wheel_event.dart';
@@ -38,16 +37,12 @@ class WheelBloc extends Bloc<WheelEvent, WheelState> {
 
       await _repository.saveAmount(amount);
 
-      logger('WHEEL STARTED');
-
       emit(WheelStopped(
         turns: turns + angle,
         amount: amount,
       ));
 
       await Future.delayed(Duration(seconds: 13), () {
-        logger('WHEEL STOPPED');
-
         int coins = 0;
         if (angle == 0.1) coins = 150;
         if (angle == 0.2) coins = 180;
@@ -70,7 +65,6 @@ class WheelBloc extends Bloc<WheelEvent, WheelState> {
 
     on<CheckAmount>((event, emit) {
       amount = _repository.getAmount();
-      logger(amount);
       emit(WheelStopped(
         turns: turns,
         amount: amount,

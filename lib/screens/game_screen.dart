@@ -4,7 +4,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../core/constants.dart';
-import '../core/utils.dart';
 import '../widgets/appbar.dart';
 import '../widgets/button.dart';
 import '../widgets/main_button.dart';
@@ -39,7 +38,6 @@ class _GameScreenState extends State<GameScreen> {
 
     started = true;
     int target = Random().nextInt(211) + 150; // 150 to 360
-    logger(target);
 
     _timer = Timer.periodic(Duration(milliseconds: 100), (timer) {
       if (size == target) {
