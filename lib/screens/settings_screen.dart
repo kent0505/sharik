@@ -136,88 +136,85 @@ class _ClearDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
       ),
-      child: DecoratedBox(
-        decoration: BoxDecoration(),
-        child: SizedBox(
-          width: 270,
-          height: 138,
-          child: Column(
-            children: [
-              SizedBox(height: 20),
-              Text(
-                'Clear Data',
+      child: SizedBox(
+        width: 270,
+        height: 138,
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            Text(
+              'Clear Data',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 17,
+                fontFamily: AppFonts.bold,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                'Are you sure? All saved data will be cleared. Please, confirm your action.',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 17,
+                  fontSize: 13,
                   fontFamily: AppFonts.bold,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  'Are you sure? All saved data will be cleared. Please, confirm your action.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 13,
-                    fontFamily: AppFonts.bold,
+            ),
+            Spacer(),
+            Container(
+              height: 0.5,
+              color: Color(0xff3C3C43).withOpacity(0.36),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Button(
+                    onPressed: () {
+                      context.read<CoinsBloc>().add(ClearCoins());
+                      context.read<WheelBloc>().add(CheckAmount());
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return OnboardScreen();
+                          },
+                        ),
+                        (route) => false,
+                      );
+                    },
+                    child: Text(
+                      'Clear Data',
+                      style: TextStyle(
+                        color: Color(0xff007AFF),
+                        fontSize: 17,
+                        fontFamily: AppFonts.bold,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              Spacer(),
-              Container(
-                height: 0.5,
-                color: Color(0xff3C3C43).withValues(alpha: 0.36),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Button(
-                      onPressed: () {
-                        context.read<CoinsBloc>().add(ClearCoins());
-                        context.read<WheelBloc>().add(CheckAmount());
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return OnboardScreen();
-                            },
-                          ),
-                          (route) => false,
-                        );
-                      },
-                      child: Text(
-                        'Clear Data',
-                        style: TextStyle(
-                          color: Color(0xff007AFF),
-                          fontSize: 17,
-                          fontFamily: AppFonts.bold,
-                        ),
+                Container(
+                  width: 0.5,
+                  height: 44,
+                  color: Color(0xff3C3C43).withOpacity(0.36),
+                ),
+                Expanded(
+                  child: Button(
+                    onPressed: Navigator.of(context).pop,
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(
+                        color: Color(0xff007AFF),
+                        fontSize: 17,
+                        fontFamily: AppFonts.bold,
                       ),
                     ),
                   ),
-                  Container(
-                    width: 0.5,
-                    height: 44,
-                    color: Color(0xff3C3C43).withValues(alpha: 0.36),
-                  ),
-                  Expanded(
-                    child: Button(
-                      onPressed: Navigator.of(context).pop,
-                      child: Text(
-                        'Cancel',
-                        style: TextStyle(
-                          color: Color(0xff007AFF),
-                          fontSize: 17,
-                          fontFamily: AppFonts.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
