@@ -12,11 +12,11 @@ import '../widgets/text_stroke.dart';
 class WinScreen extends StatelessWidget {
   const WinScreen({
     super.key,
-    required this.amount,
+    required this.coins,
     this.goHome = false,
   });
 
-  final int amount;
+  final int coins;
   final bool goHome;
 
   @override
@@ -26,15 +26,13 @@ class WinScreen extends StatelessWidget {
         children: [
           Spacer(),
           TextStroke(
-            amount == 0
-                ? 'You Lost!'
-                : 'Congratulate!\nYou won $amount\ncoins!',
+            coins == 0 ? 'You Lost!' : 'Congratulate!\nYou won $coins\ncoins!',
             fontSize: 32,
             fontFamily: AppFonts.lemon,
             strokeWidth: 6,
           ),
           SizedBox(height: 34),
-          amount == 0
+          coins == 0
               ? Stack(
                   children: [
                     ColorFiltered(
@@ -52,7 +50,7 @@ class WinScreen extends StatelessWidget {
           if (goHome) ...[
             Button(
               onPressed: () {
-                context.read<CoinsBloc>().add(SaveCoins(amount: amount));
+                context.read<CoinsBloc>().add(SaveCoins(coins: coins));
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
@@ -70,7 +68,7 @@ class WinScreen extends StatelessWidget {
           MainButton(
             title: goHome ? 'Repeat Game' : 'Collect Money',
             onPressed: () {
-              context.read<CoinsBloc>().add(SaveCoins(amount: amount));
+              context.read<CoinsBloc>().add(SaveCoins(coins: coins));
               Navigator.pop(context);
             },
           ),

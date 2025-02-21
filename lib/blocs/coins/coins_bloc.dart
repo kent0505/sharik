@@ -19,7 +19,7 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
 
     on<SaveCoins>((event, emit) async {
       int coins = _repository.getCoins();
-      coins += event.amount;
+      coins += event.coins;
       await _repository.saveCoins(coins);
       emit(CoinsLoaded(coins: coins));
     });

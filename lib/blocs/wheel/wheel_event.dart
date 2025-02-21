@@ -4,3 +4,5 @@ part of 'wheel_bloc.dart';
 sealed class WheelEvent {}
 
 class StartWheel extends WheelEvent {}
+
+class CheckAmount extends WheelEvent {}

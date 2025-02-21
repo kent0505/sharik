@@ -38,7 +38,11 @@ Future<void> main() async {
               repository: context.read<CoinsRepository>(),
             )..add(LoadCoins()),
           ),
-          BlocProvider(create: (context) => WheelBloc()),
+          BlocProvider(
+            create: (context) => WheelBloc(
+              repository: context.read<CoinsRepository>(),
+            )..add(CheckAmount()),
+          ),
         ],
         child: MyApp(),
       ),

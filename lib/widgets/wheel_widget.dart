@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/wheel/wheel_bloc.dart';
 import '../core/constants.dart';
-import '../core/utils.dart';
 import '../screens/win_screen.dart';
 import 'button.dart';
 import 'svg_widget.dart';
@@ -15,21 +14,19 @@ class WheelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<WheelBloc, WheelState>(
       listener: (context, state) {
-        if (state is WheelStopped && state.canSpin) {
-          // push to win page
-          logger(state.amount);
-
+        if (state is WheelDialog) {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => WinScreen(amount: state.amount),
+              builder: (context) => WinScreen(coins: state.coins),
             ),
           );
         }
       },
       builder: (context, state) {
         final active =
-            state is WheelInitial || state is WheelStopped && state.canSpin;
+            state is WheelStopped && state.canSpin && state.amount != 0;
+        final zero = state is WheelStopped && state.amount == 0;
 
         return Stack(
           alignment: Alignment.center,
@@ -58,16 +55,14 @@ class WheelWidget extends StatelessWidget {
               top: 80,
               child: SvgWidget(Assets.wheel4),
             ),
-            Container(
-              height: 111,
-              width: 111,
+            DecoratedBox(
               decoration: BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
+              child: SizedBox.square(dimension: 111),
             ),
-            AnimatedOpacity(
-              duration: Duration(milliseconds: 300),
+            Opacity(
               opacity: active ? 1 : 0,
               child: Button(
                 onPressed: active
@@ -78,6 +73,16 @@ class WheelWidget extends StatelessWidget {
                 child: SvgWidget(Assets.wheel5),
               ),
             ),
+            if (zero)
+              Text(
+                'Come\ntomorrow',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontFamily: AppFonts.lemon,
+                ),
+              ),
           ],
         );
       },

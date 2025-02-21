@@ -24,7 +24,7 @@ class _GameScreenState extends State<GameScreen> {
       context,
       MaterialPageRoute(
         builder: (context) => WinScreen(
-          amount: 0,
+          coins: 0,
           goHome: true,
         ),
       ),

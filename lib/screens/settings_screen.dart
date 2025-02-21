@@ -3,6 +3,7 @@ import 'package:app_settings/app_settings.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/coins/coins_bloc.dart';
+import '../blocs/wheel/wheel_bloc.dart';
 import '../core/constants.dart';
 import '../widgets/app_scaffold.dart';
 import '../widgets/appbar.dart';
@@ -174,6 +175,7 @@ class _ClearDialog extends StatelessWidget {
                     child: Button(
                       onPressed: () {
                         context.read<CoinsBloc>().add(ClearCoins());
+                        context.read<WheelBloc>().add(CheckAmount());
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

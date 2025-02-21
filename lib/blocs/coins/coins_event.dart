@@ -6,8 +6,8 @@ sealed class CoinsEvent {}
 final class LoadCoins extends CoinsEvent {}
 
 final class SaveCoins extends CoinsEvent {
-  SaveCoins({required this.amount});
-  final int amount;
+  SaveCoins({required this.coins});
+  final int coins;
 }
 
 final class ClearCoins extends CoinsEvent {}

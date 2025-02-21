@@ -8,11 +8,16 @@ final class WheelInitial extends WheelState {}
 final class WheelStopped extends WheelState {
   WheelStopped({
     required this.turns,
-    this.amount = 0,
+    required this.amount,
     this.canSpin = false,
   });
 
   final double turns;
   final int amount;
   final bool canSpin;
+}
+
+final class WheelDialog extends WheelState {
+  WheelDialog({required this.coins});
+  final int coins;
 }
