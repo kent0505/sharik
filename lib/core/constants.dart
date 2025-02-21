@@ -17,7 +17,12 @@ abstract final class Assets {
   static const balloon = 'assets/balloon.png';
   static const onboard1 = 'assets/onboard1.png';
   static const onboard2 = 'assets/onboard2.png';
+  static const add = 'assets/add.svg';
+  static const profile1 = 'assets/profile1.svg';
+  static const profile2 = 'assets/profile2.svg';
+  static const profile3 = 'assets/profile3.svg';
   static const button = 'assets/button.svg';
+  static const buttonDisabled = 'assets/button_disabled.svg';
   static const back = 'assets/back.svg';
   static const settings = 'assets/settings.svg';
   static const scores = 'assets/scores.svg';
@@ -34,6 +39,8 @@ abstract final class Assets {
 
 abstract final class Keys {
   static const onboard = 'onboard';
+  static const nickname = 'nickname';
+  static const photo = 'photo';
   static const coins = 'coins';
   static const wheelAmount = 'wheelAmount';
 }

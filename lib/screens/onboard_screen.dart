@@ -4,7 +4,7 @@ import '../core/constants.dart';
 import '../widgets/app_scaffold.dart';
 import '../widgets/main_button.dart';
 import '../widgets/text_stroke.dart';
-import 'home_screen.dart';
+import 'profile_screen.dart';
 
 class OnboardScreen extends StatelessWidget {
   const OnboardScreen({super.key});
@@ -48,7 +48,9 @@ class OnboardScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => ProfileScreen(),
+                    ),
                   );
                 },
               ),

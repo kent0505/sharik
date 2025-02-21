@@ -8,20 +8,22 @@ class MainButton extends StatelessWidget {
   const MainButton({
     super.key,
     required this.title,
+    this.active = true,
     required this.onPressed,
   });
 
   final String title;
+  final bool active;
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Button(
-      onPressed: onPressed,
+      onPressed: active ? onPressed : null,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          SvgWidget(Assets.button),
+          SvgWidget(active ? Assets.button : Assets.buttonDisabled),
           Center(
             child: Text(
               title,

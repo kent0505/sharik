@@ -8,6 +8,8 @@ abstract interface class OnboardRepository {
   bool isOnBoard();
 
   Future<void> removeOnboard();
+
+  Future<void> saveProfile(String nickname, String photo);
 }
 
 final class OnboardRepositoryImpl implements OnboardRepository {
@@ -23,5 +25,11 @@ final class OnboardRepositoryImpl implements OnboardRepository {
   @override
   Future<void> removeOnboard() async {
     await _prefs.setBool(Keys.onboard, false);
+  }
+
+  @override
+  Future<void> saveProfile(String nickname, String photo) async {
+    await _prefs.setString(Keys.nickname, nickname);
+    await _prefs.setString(Keys.photo, photo);
   }
 }
