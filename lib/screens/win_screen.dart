@@ -26,13 +26,13 @@ class WinScreen extends StatelessWidget {
         children: [
           Spacer(),
           TextStroke(
-            coins == 0 ? 'You Lost!' : 'Congratulate!\nYou won $coins\ncoins!',
+            coins <= 0 ? 'You Lost!' : 'Congratulate!\nYou won $coins\ncoins!',
             fontSize: 32,
             fontFamily: AppFonts.lemon,
             strokeWidth: 6,
           ),
           SizedBox(height: 34),
-          coins == 0
+          coins <= 0
               ? Stack(
                   children: [
                     ColorFiltered(

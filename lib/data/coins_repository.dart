@@ -47,7 +47,7 @@ final class CoinsRepositoryImpl implements CoinsRepository {
     int lastUsed = _prefs.getInt(Keys.lastUsed) ?? 0;
     DateTime now = DateTime.fromMillisecondsSinceEpoch(getTimestamp() * 1000);
     DateTime last = DateTime.fromMillisecondsSinceEpoch(lastUsed * 1000);
-    return now.day == last.day ? amount : 3;
+    return now.day == last.day && now.year == last.year ? amount : 3;
   }
 
   @override

@@ -35,6 +35,8 @@ abstract final class Assets {
   static const wheel5 = 'assets/wheel5.svg';
   static const win = 'assets/win.svg';
   static const lose = 'assets/lose.svg';
+  static const coef1 = 'assets/coef1.svg';
+  static const coef2 = 'assets/coef2.svg';
 }
 
 abstract final class Keys {
