@@ -1,61 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../core/constants.dart';
 import '../widgets/app_scaffold.dart';
 import '../widgets/main_button.dart';
-import '../data/onboard_repository.dart';
+import '../widgets/text_stroke.dart';
 import 'home_screen.dart';
 
-class OnboardScreen extends StatefulWidget {
+class OnboardScreen extends StatelessWidget {
   const OnboardScreen({super.key});
-
-  @override
-  State<OnboardScreen> createState() => _OnboardScreenState();
-}
-
-class _OnboardScreenState extends State<OnboardScreen> {
-  int index = 1;
-
-  String getTitle() {
-    if (index == 1) return '';
-    return '';
-  }
-
-  String getDescription() {
-    if (index == 1) return '';
-    return '';
-  }
-
-  void onNext() async {
-    if (index == 2) {
-      context.read<OnboardRepository>().removeOnboard();
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
-        (route) => false,
-      );
-    } else {
-      setState(() {
-        index++;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          Text(
-            getTitle(),
+          Positioned(
+            bottom: 10,
+            right: -260,
+            child: RotationTransition(
+              turns: AlwaysStoppedAnimation(25 / 360),
+              child: Image.asset(
+                Assets.onboard2,
+                width: 690,
+              ),
+            ),
           ),
-          Text(
-            getDescription(),
+          Positioned(
+            bottom: 0,
+            left: -30,
+            child: Image.asset(
+              Assets.onboard1,
+              width: 340,
+            ),
           ),
-          MainButton(
-            title: 'Go Home',
-            onPressed: onNext,
+          Column(
+            children: [
+              SizedBox(height: 16 + MediaQuery.of(context).viewPadding.top),
+              TextStroke(
+                'Step right in and enjoy the game!',
+                fontSize: 32,
+                fontFamily: AppFonts.lemon,
+                strokeWidth: 8,
+              ),
+              Spacer(),
+              MainButton(
+                title: 'Let’s Get Started',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+              ),
+              SizedBox(height: 46),
+            ],
           ),
         ],
       ),

@@ -53,6 +53,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     precacheImage(AssetImage(Assets.bg), context);
     precacheImage(AssetImage(Assets.balloon), context);
+    precacheImage(AssetImage(Assets.onboard1), context);
+    precacheImage(AssetImage(Assets.onboard2), context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme,

@@ -9,6 +9,8 @@ abstract interface class CoinsRepository {
   int getCoins();
 
   Future<void> saveCoins(int amount);
+
+  Future<void> clearCoins();
 }
 
 final class CoinsRepositoryImpl implements CoinsRepository {
@@ -24,7 +26,13 @@ final class CoinsRepositoryImpl implements CoinsRepository {
 
   @override
   Future<void> saveCoins(int amount) async {
-    await _prefs.setInt(Keys.coins, amount);
     logger('SAVE COINS');
+    await _prefs.setInt(Keys.coins, amount);
+  }
+
+  @override
+  Future<void> clearCoins() async {
+    logger('CLEAR COINS');
+    await _prefs.clear();
   }
 }

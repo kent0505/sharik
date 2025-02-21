@@ -9,3 +9,5 @@ final class SaveCoins extends CoinsEvent {
   SaveCoins({required this.amount});
   final int amount;
 }
+
+final class ClearCoins extends CoinsEvent {}

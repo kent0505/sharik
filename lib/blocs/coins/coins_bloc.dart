@@ -23,5 +23,10 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
       await _repository.saveCoins(coins);
       emit(CoinsLoaded(coins: coins));
     });
+
+    on<ClearCoins>((event, emit) async {
+      await _repository.clearCoins();
+      emit(CoinsLoaded(coins: 0));
+    });
   }
 }

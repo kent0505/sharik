@@ -15,6 +15,8 @@ abstract final class AppFonts {
 abstract final class Assets {
   static const bg = 'assets/bg.png';
   static const balloon = 'assets/balloon.png';
+  static const onboard1 = 'assets/onboard1.png';
+  static const onboard2 = 'assets/onboard2.png';
   static const button = 'assets/button.svg';
   static const back = 'assets/back.svg';
   static const settings = 'assets/settings.svg';
